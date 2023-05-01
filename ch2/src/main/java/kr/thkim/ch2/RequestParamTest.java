@@ -11,12 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RequestParamTest {
-	
-	@ExceptionHandler(Exception.class)
-	public String catcher(Exception ex) {
-		return "yoilError";
-	}
-	
 	@RequestMapping("/requestParam")
 	public String main(HttpServletRequest request) {
 		String year = request.getParameter("year");
@@ -28,7 +22,7 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam2")
-//	public String main2(@RequestParam(name="year", required=false) String year) {   // ¾Æ·¡¿Í µ¿ÀÏ 
+//	public String main2(@RequestParam(name="year", required=false) String year) {   // ì•„ë˜ì™€ ë™ì¼ 
 	public String main2(String year) {   
 //		http://localhost/ch2/requestParam2         ---->> year=null
 //		http://localhost/ch2/requestParam2?year    ---->> year=""
@@ -37,9 +31,9 @@ public class RequestParamTest {
 	}
 
 	@RequestMapping("/requestParam3")
-//		public String main3(@RequestParam(name="year", required=true) String year) {   // ¾Æ·¡¿Í µ¿ÀÏ 
+//		public String main3(@RequestParam(name="year", required=true) String year) {   // ì•„ë˜ì™€ ë™ì¼ 
 		public String main3(@RequestParam String year) {   
-//		http://localhost/ch2/requestParam3         ---->> year=null   400 Bad Request. required=true¶ó¼­ 
+//		http://localhost/ch2/requestParam3         ---->> year=null   400 Bad Request. required=trueë¼ì„œ 
 //		http://localhost/ch2/requestParam3?year    ---->> year=""
 		System.out.printf("[%s]year=[%s]%n", new Date(), year);
 		return "yoil";	

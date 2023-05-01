@@ -12,45 +12,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class YoilTeller {
+    @RequestMapping("/getYoil") // http://localhost:8080/ch2/getYoil?year=2021&month=10&day=1
+    //    public static void main(String[] args) {
+    public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 1. ì…ë ¥
+//        String year = args[0];
+//        String month = args[1];
+//        String day = args[2];
+        String year = request.getParameter("year");
+        String month = request.getParameter("month");
+        String day = request.getParameter("day");
 
-	@RequestMapping("/getYoil")
-	public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		
-		// 1. ÀÔ·Â
-//      String year = args[0];
-//      String month = args[1];
-//      String day = args[2];
-      String year = request.getParameter("year");
-      String month = request.getParameter("month");
-      String day = request.getParameter("day");
+        int yyyy = Integer.parseInt(year);
+        int mm = Integer.parseInt(month);
+        int dd = Integer.parseInt(day);
 
-      int yyyy = Integer.parseInt(year);
-      int mm = Integer.parseInt(month);
-      int dd = Integer.parseInt(day);
+        // 2. ì²˜ë¦¬
+        Calendar cal = Calendar.getInstance();
+        cal.set(yyyy, mm - 1, dd);
 
-      // 2. Ã³¸®
-      Calendar cal = Calendar.getInstance();
-      cal.set(yyyy, mm - 1, dd);
+        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+        char yoil = " ì¼ì›”í™”ìˆ˜ëª©ê¸ˆí† ".charAt(dayOfWeek);   // ì¼ìš”ì¼:1, ì›”ìš”ì¼:2, ... 
 
-      int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-      char yoil = " ÀÏ¿ùÈ­¼ö¸ñ±İÅä".charAt(dayOfWeek);   // ÀÏ¿äÀÏ:1, ¿ù¿äÀÏ:2, ... 
-
-      // 3. Ãâ·Â
-//      System.out.println(year + "³â " + month + "¿ù " + day + "ÀÏÀº ");
-//      System.out.println(yoil + "¿äÀÏÀÔ´Ï´Ù.");
-      response.setContentType("text/html");    // ÀÀ´äÀÇ Çü½ÄÀ» html·Î ÁöÁ¤
-      response.setCharacterEncoding("utf-8");  // ÀÀ´äÀÇ ÀÎÄÚµùÀ» utf-8·Î ÁöÁ¤
-      PrintWriter out = response.getWriter();  // ºê¶ó¿ìÀú·ÎÀÇ Ãâ·Â ½ºÆ®¸²(out)À» ¾ò´Â´Ù.
-      out.println("<html>");
-      out.println("<head>");
-      out.println("</head>");
-      out.println("<body>");
-      out.println(year + "³â " + month + "¿ù " + day + "ÀÏÀº ");
-      out.println(yoil + "¿äÀÏÀÔ´Ï´Ù.");
-      out.println("</body>");
-      out.println("</html>");
-      out.close();// TODO Auto-generated method stub
-
-	}
-
+        // 3. ì¶œë ¥
+//        System.out.println(year + "ë…„ " + month + "ì›” " + day + "ì¼ì€ ");
+//        System.out.println(yoil + "ìš”ì¼ì…ë‹ˆë‹¤.");
+        response.setContentType("text/html");    // ì‘ë‹µì˜ í˜•ì‹ì„ htmlë¡œ ì§€ì •
+        response.setCharacterEncoding("utf-8");  // ì‘ë‹µì˜ ì¸ì½”ë”©ì„ utf-8ë¡œ ì§€ì •
+        PrintWriter out = response.getWriter();  // ë¸Œë¼ìš°ì €ë¡œì˜ ì¶œë ¥ ìŠ¤íŠ¸ë¦¼(out)ì„ ì–»ëŠ”ë‹¤.
+        out.println("<html>");
+        out.println("<head>");
+        out.println("</head>");
+        out.println("<body>");
+        out.println(year + "ë…„ " + month + "ì›” " + day + "ì¼ì€ ");
+        out.println(yoil + "ìš”ì¼ì…ë‹ˆë‹¤.");
+        out.println("</body>");
+        out.println("</html>");
+        out.close();
+    }
 }

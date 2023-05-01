@@ -1,11 +1,11 @@
-<%@ page contentType="text/html;charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="kr.thkim.ch2.*" %>
 <%
 	Person person = new Person();
 	request.setAttribute("person", person);
-	request.setAttribute("name", "남궁성");   
+	request.setAttribute("name", "THKIM");   
 	request.setAttribute("list", new java.util.ArrayList());	
 %>
 <html>  
@@ -34,10 +34,10 @@ empty null=${empty null} <br>
 empty list=${empty list} <br>
 null==0 = ${null==0} <br>
 null eq 0 = ${null eq 0} <br>
-name == "남궁성"=${name=="남궁성"} <br>
-name != "남궁성"=${name!="남궁성"} <br>
-name eq "남궁성"=${name eq "남궁성"} <br>  
-name ne "남궁성"=${name ne "남궁성"} <br>  
-name.equals("남궁성")=${name.equals("남궁성")} <br>   
+name == "THKIM"=${name=="THKIM"} <br>
+name != "THKIM"=${name!="THKIM"} <br>
+name eq "THKIM"=${name eq "THKIM"} <br>  
+name ne "THKIM"=${name ne "THKIM"} <br>  
+name.equals("THKIM")=${name.equals("THKIM")} <br>   
 </body>
 </html>
