@@ -1,4 +1,4 @@
-package kr.thkim.ch2.controller;
+package kr.thkim.ch2;
 
 import java.util.Arrays;
 import java.util.Date;
